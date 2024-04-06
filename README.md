@@ -3,8 +3,19 @@ Merhabalar🖐
 Asp.Net MVC5 ile Online Ticari Otomasyon projesini tamamlamış bulunmaktayım. Yeni tecrübeler kazandığım ve kendime yeni şeyler kattığım bu eğitimde yaptıklarımı sizlerle paylaşmak istiyorum.
 
 Projede admin paneli ve müşteri paneli olmak üzere iki panel bulunmaktadır. 
-Admin Panelinde: Veritabanı tabloları üzerinde dinamik CRUD işlemleri yapılabilmekte, dinamik fatura sistemi ile fatura oluşturma, satış yapma, kargo takip ve detay işlemleri, mevcut bilgilerin istenilen formatta(excel, pdf, vb.) indirebilme işlemleri, mevcut istatistik bilgilerini görüntüleme, tüm cari ve adminlerin görebileceği bülten yayınlama ve yeni admin ekleme işlemleri bulunmaktadır.
-Müşteri Panelinde: Sipariş bilgilerini görüntüleme, kargo durumunu takip etme, yayınlanan bülteni görüntüleme ve mesajlaşma işlemleri bulunmaktadır.
+
+Admin Panelinde;<br>
+► Veritabanı tabloları üzerinde dinamik CRUD işlemleri yapılabilmekte <br>
+► Dinamik fatura sistemi ile fatura oluşturma, satış yapma<br>
+► Kargo takip ve detay işlemleri, mevcut bilgilerin istenilen formatta(excel, pdf, vb.) indirebilme işlemleri<br>
+► Mevcut istatistik bilgilerini görüntüleme, tüm cari ve adminlerin görebileceği bülten yayınlama ve yeni admin ekleme işlemleri<br>
+► Otomatik Qr oluşturma ve indirme işlemleri gerçekleştirilebilmektedir.<br>
+
+Müşteri Panelinde;
+
+► Sipariş bilgilerini görüntüleme<br>
+► Kargo durumunu takip etme<br>
+► Yayınlanan duyuruları görüntüleme ve mesajlaşma işlemleri bulunmaktadır.<br>
 
 Proje kapsamında kullanılan teknolojiler.<br>
 📌 Layout Kontrolü<br>
