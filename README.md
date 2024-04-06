@@ -34,7 +34,7 @@ Proje kapsamında kullanılan teknolojiler.<br>
 📌 Hazır Template Kurulumu ve Düzenlenmesi<br>
 📌 Dinamik Web Projeleri Oluşturma<br>
 📌 QR Oluşturma ve indirme İşlemleri<br>
-📌 Java Script - Ajax Script Kullanımları<br>
+📌 Java Script - Ajax Kullanımları<br>
 📌 Dashboard yapısı<br>
 📌 Chart<br>
 📌 Widget Cards kullanımları<br>
