@@ -1,0 +1,113 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<FaturaKalem>
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int sayi = 0;
+}
+
+<br />
+<h2>Fatura Kalemleri</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Fatura Bilgileri /<b style="margin-left:25px;"> ID : @ViewBag.id </b><b style="margin-left: 25px;"> Seri No : @ViewBag.seri </b><b style="margin-left: 25px;"> Sıra No : @ViewBag.sıra</b></li>
+</ol>
+<br />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticari Otomasyon Kategori Raporlama Sayfası</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+</head>
+<body>
+    <table id="example" class="table table-striped table-bordered dt-responsive nowrap col-xl-3 col-md-6" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ürün Harici Kod</th>
+                <th>Açıklama</th>
+                <th>Miktar</th>
+                <th>Birim Fiyat</th>
+                <th>Tutar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                sayi++;
+                <tr>
+                    <th>@sayi</th>
+                    <td>@x.HariciKod</td>
+                    <td>@x.Aciklama</td>
+                    <td>@x.Miktar</td>
+                    <td>@x.BirimFiyat.ToString("n2") ₺</td>
+                    <td>@x.Tutar.ToString("n2") ₺</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                responsive: true,
+                language: { url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/tr.json' },
+
+            });
+        });</script>
+</body>
+</html>
+<a href="/Faturalar/YeniKalem" class="btn btn-outline-light" style="background-color:brown" data-toggle="modal" data-target="#Modal1">Yeni Kalem Girişi</a>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Fatura Kalem Girişi</h2>
+            </div>
+            <form method="post" action="/Faturalar/YeniKalem">
+                <div class="modal-body">
+                    <input type="text" name="Faturaid" value="@ViewBag.id" class="form-control" />
+                    <br />
+                    <b><label>Harici Kod</label></b>
+                    <input type="text" name="HariciKod" class="form-control" />
+                    <br />
+                    <b><label>Açıklama</label></b>
+                    <input type="text" name="Aciklama" class="form-control" />
+                    <br />
+                    <b><label>Miktar</label></b>
+                    <input type="text" name="Miktar" class="form-control" />
+                    <br />
+                    <b><label>Birim Fiyat</label></b>
+                    <input type="text" name="BirimFiyat" class="form-control" />
+                    <br />
+                    <b><label>Tutar</label></b>
+                    <input type="text" name="Tutar" class="form-control" />
+                    <br />
+                    <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

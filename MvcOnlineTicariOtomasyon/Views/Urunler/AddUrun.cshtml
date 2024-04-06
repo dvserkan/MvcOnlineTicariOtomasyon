@@ -1,0 +1,46 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+@*PENCERE*@
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Ürün Ekleme Sayfası</h2>
+            </div>
+            @using (Html.BeginForm("AddUrun", "Urunler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <form method="post" action="/Urunler/AddUrun">
+                    <div class="modal-body">
+                        <b><label>Ürün Adı</label></b>
+                        <input type="text" name="UrunAd" class="form-control" />
+                        <br />
+                        <b><label>Ürün Kategorisi</label></b>
+                        @Html.DropDownListFor(x => x.Kategoriid, (List<SelectListItem>)ViewBag.Uruns, "Kategori Seçiniz", new { @class = "form-control" })
+                        <br />
+                        <b><label>Ürün Markası</label></b>
+                        <input type="text" name="Marka" class="form-control" />
+                        <br />
+                        <b><label>Ürün Stoğu</label></b>
+                        <input type="text" name="Stok" class="form-control" />
+                        <br />
+                        <b><label>Alış Fiyatı</label></b>
+                        <input type="text" name="AlisFiyat" class="form-control" />
+                        <br />
+                        <b><label>Satış Fiyatı</label></b>
+                        <input type="text" name="SatisFiyat" class="form-control" />
+                        <br />
+                        <b>Durum :</b><b style="margin-left:100px;">@Html.Label("Aktif")</b>
+                        <input type="radio" name="Durum" value="true" checked="true" />
+                        <b style="margin-left:35px;">@Html.Label("Pasif")</b>
+                        <input type="radio" name="Durum" value="false" />
+                        <br />
+                        <br />
+                        <b><label>Ürün Görseli</label></b><br />
+                        <input type="file" name="UrunGorsel" placeholder="Ürün Görselini Seçiniz" />
+                        <br /><br />
+                        <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>

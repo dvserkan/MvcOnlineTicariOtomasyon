@@ -1,0 +1,50 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cariler
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+<br />
+<h2>Cari Bilgi Paneli</h2>
+<br />
+@using (Html.BeginForm("Index", "CariPanel", FormMethod.Post))
+{
+  <table class="table table-bordered col-md-5">
+
+      <tr>
+          <td>
+              <label>Mail Adresi : </label>
+              <br />
+              <h3>@HttpContext.Current.User.Identity.Name</h3>
+          </td>
+      </tr>
+      <tr>
+          <td>@Html.HiddenFor(x => x.Cariid, new { @class = "form-control" })</td>
+      </tr>
+      <tr>
+          <td>@Html.Label("Cari Adı")</td>
+          <td>@Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })</td>
+      </tr>
+      <tr>
+          <td>@Html.Label("Cari Soyadı")</td>
+          <td>@Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })</td>
+      </tr>
+      <tr>
+          <td>@Html.Label("Cari Ünvanı")</td>
+          <td>@Html.TextBoxFor(x => x.CariUnvan, new { @class = "form-control" })</td>
+      </tr>
+      <tr>
+          <td>@Html.Label("Şehir")</td>
+          <td>@Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })</td>
+      </tr>
+      <tr>
+          <td>@Html.Label("Cari Mail")</td>
+          <td>@Html.TextBoxFor(x => x.CariMail, new { @class = "form-control" })</td>
+      </tr>
+      <tr>
+          <td>@Html.Label("Cari Şifre")</td>
+          <td>@Html.TextBoxFor(x => x.CariSifre, new { @class = "form-control" })</td>
+      </tr>
+  </table>
+  <button class="btn btn-outline-success"> Bilgilerimi Güncelle</button>
+}
+

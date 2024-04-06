@@ -1,0 +1,31 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "EditPersonel";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div style="margin-left:35%; margin-top:100px;">
+    <br /><br /><br />
+    <h4 style="margin-left:30px;">Personel Düzenleme Sayfası</h4>
+    @using (Html.BeginForm("EditPersonel", "Personel", FormMethod.Post, new { enctype = "multipart/form-data", @class = "col-xl-5 col-md-5 table-bordered", @style = "height:400px;" }))
+    {
+        <form method="post" class="col-xl-5 col-md-5 table-bordered" style="height:400px;">
+            <div class="modal-body">
+                @Html.HiddenFor(x => x.Personelid)
+                <b>@Html.Label("Personel Adı - Soyadı")</b>
+                @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+                <br />
+                <b>@Html.Label("Departman")</b>
+                @Html.DropDownListFor(x => x.Departmanid, (List<SelectListItem>)ViewBag.depart, "Departman Seçiniz...", new { @class = "form-control" })
+                <br />
+                <b>@Html.Label("Personel Görseli")</b>
+                <input type="file" name="PersonelGorsel"  placeholder="Personel Görselini Seçiniz" />
+                <br /><br />
+                <b>@Html.Label("Aktif")</b>
+                <input type="radio" name="Durum" value="true" checked="true" />
+                <br />
+                <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+            </div>
+        </form>
+    }
+</div>

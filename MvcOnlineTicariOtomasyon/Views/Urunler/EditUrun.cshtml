@@ -1,0 +1,46 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+@{
+    ViewBag.Title = "EditUrun";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div style="margin-left:35%;margin-top:-50px;">
+    <br /><br /><br />
+    <h4 style="margin-left:30px;">Ürün Düzenleme Sayfası</h4>
+    @using (Html.BeginForm("EditUrun", "Urunler", FormMethod.Post, new { enctype = "multipart/form-data", @class = "col-xl-5 col-md-5 table-bordered", @style = "height:750px;" }))
+    {
+        <form method="post" class="col-xl-5 col-md-5 table-bordered" style="height:820px;">
+            <div class="modal-body">
+                @Html.HiddenFor(x => x.Urunid)
+                <b>@Html.Label("Ürün Adı")</b>
+                @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+                <br />
+                <b>@Html.Label("Ürün Kategorisi")</b>
+                @Html.DropDownListFor(x => x.Kategoriid, (List<SelectListItem>)ViewBag.Uruns, new { @class = "form-control" })
+                <br />
+                <b>@Html.Label("Ürün Markası")</b>
+                @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+                <br />
+                <b>@Html.Label("Ürün Stok")</b>
+                @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+                <br />
+                <b>@Html.Label("Alış Fiyatı")</b>
+                @Html.TextBoxFor(x => x.AlisFiyat, new { @class = "form-control" })
+                <br />
+                <b>@Html.Label("Satış Fiyatı")</b>
+                @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+                <br />
+                <b style="margin-left:100px;">@Html.Label("Aktif")</b>
+                <input type="radio" name="Durum" value="true" checked="true" />
+                <b style="margin-left:55px;">@Html.Label("Pasif")</b>
+                <input type="radio" name="Durum" value="false" />
+                <br />
+                <b>@Html.Label("Ürün Görseli")</b>
+                <input type="file" name="UrunGorsel" placeholder="Ürün Görselini Seçiniz" />
+                <br /><br />
+                <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+            </div>
+        </form>
+    }
+</div>
+

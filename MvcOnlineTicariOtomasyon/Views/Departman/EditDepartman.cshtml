@@ -1,0 +1,19 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Departman
+@{
+    ViewBag.Title = "EditDepartman";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div style="margin-left:35%;margin-top:8%;">
+    <br /><br /><br />
+    <h4 style="margin-left:10px;">Departman Düzenleme Sayfası</h4>
+    <form method="post" class="col-xl-5 col-md-5 table-bordered" style="height:180px;">
+        @Html.HiddenFor(x => x.Departmanid, new { @class = "form-control", style = "visibility:hidden" })
+        <br />
+        <b>@Html.Label("Departman Adı")</b>
+        @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Güncelle</button>
+    </form>
+</div>
+

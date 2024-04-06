@@ -1,0 +1,28 @@
+﻿
+@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@using (Html.BeginForm("AddPersonel", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Yeni Personel Ekleme</h2>
+                </div>
+                <form method="post" action="/Personel/AddPersonel">
+                    <div class="modal-body">
+                        <b><label>Personel Adı - Soyadı</label></b>
+                        <input type="text" name="PersonelAd" class="form-control" />
+                        <br />
+                        <b><label>Personel Departmanı</label></b>
+                        @Html.DropDownListFor(x => x.Departmanid, (List<SelectListItem>)ViewBag.depart, "Departman Seçiniz...", new { @class = "form-control" })
+                        <br />
+                        <b><label>Personel Görseli</label></b><br />
+                        <input type="file" name="PersonelGorsel" placeholder="Personel Görselini Seçiniz" />
+                        <br /><br />
+                        <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Siniflar.SinifGrup>
+@{ int sayi = 0;}
+<div class="card-body p-0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 10px">#</th>
+                <th>Şehir</th>
+                <th>Progress Bar</th>
+                <th style="width: 40px">Adet</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sayi++;
+
+                <tr>
+                    <td>@sayi.</td>
+                    <td>@item.Sehir</td>
+                    <td>
+                        @if (item.Sayi == 1)
+                        {
+                            <div class="progress progress-xs">
+                                <div class="progress-bar progress-bar-danger" style="width: @item.Sayi%"></div>
+                            </div>
+                        }
+                        @if (item.Sayi > 1)
+                        {
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-success" style="width: @item.Sayi%"></div>
+                            </div>
+                        }
+                    </td>
+                    @if (item.Sayi == 1)
+                    {
+                        <td><span class="badge bg-danger">@item.Sayi</span></td>
+                    }
+                    @if (item.Sayi > 1)
+                    {
+                        <td><span class="badge bg-success">@item.Sayi</span></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

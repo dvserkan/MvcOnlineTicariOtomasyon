@@ -1,0 +1,36 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cariler
+@{
+    ViewBag.Title = "EditCari";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div style="margin-left:35%;">
+    <br /><br /><br />
+    <h4 style="margin-left:30px;">Cari Düzenleme Sayfası</h4>
+    <form method="post" class="col-xl-5 col-md-5 table-bordered" style="height:600px;">
+        <div class="modal-body">
+            @Html.HiddenFor(x => x.Cariid)
+            <b>@Html.Label("Cari Adı")</b>
+            @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CariAd, "", new { @style = "color:red" })
+            <br />
+            <b>@Html.Label("Cari Soyadı")</b>
+            @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })
+            <br />
+            <b>@Html.Label("Cari Ünvan")</b>
+            @Html.TextBoxFor(x => x.CariUnvan, new { @class = "form-control" })
+            <br />
+            <b>@Html.Label("Şehir")</b>
+            @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })
+            <br />
+            <b>@Html.Label("Mail")</b>
+            @Html.TextBoxFor(x => x.CariMail, new { @class = "form-control" })
+            <br />
+            <b>@Html.Label("Aktif")</b>
+            <input type="radio" name="CariStatus" value="true" checked="true" />
+            <br /><br />
+            <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+        </div>
+    </form>
+</div>
+

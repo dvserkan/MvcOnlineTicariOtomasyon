@@ -1,0 +1,111 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticari Otomasyon Kategori Raporlama Sayfası</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+</head>
+<body>
+    <table id="example" class="table table-striped table-bordered dt-responsive nowrap col-xl-3 col-md-6" style="width:100%">
+        <thead>
+            <tr>
+                <th>Cari Adı</th>
+                <th>Cari Ünvan</th>
+                <th>Şehir</th>
+                <th>Cari Mail</th>
+                <th>Sil - Güncelle - Geçmiş</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.CariAd @x.CariSoyad</td>
+                    <td>@x.CariUnvan</td>
+                    <td>@x.CariSehir</td>
+                    <td>@x.CariMail</td>
+                    <td class="text-center">
+                        <a href="/Cari/DeleteCari/@x.Cariid" class="btn btn-outline-danger" style="margin-right:25px;">Sil</a>
+                        <a href="/Cari/EditCari/@x.Cariid" class="btn btn-outline-success" style="margin-right:25px;">Güncelle</a>
+                        <a href="/Cari/CariDetay/@x.Cariid" class="btn btn-outline-info">Satış Geçmişi</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                responsive: true,
+                language: { url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/tr.json' },
+
+            });
+        });</script>
+</body>
+</html>
+<a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#Modal1">Yeni Cari Ekle</a>
+@*PENCERE*@
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Cari Ekleme</h2>
+            </div>
+            <form method="post" action="/Cari/AddCari">
+                <div class="modal-body">
+                    <b><label>Cari Adı</label></b>
+                    <input type="text" name="CariAd" class="form-control" required/>
+                    <br />
+                    <b><label>Cari Soyadı</label></b>
+                    <input type="text" name="CariSoyad" class="form-control" />
+                    <br />
+                    <b><label>Cari Ünvan</label></b>
+                    <input type="text" name="CariUnvan" class="form-control" />
+                    <br />
+                    <b><label>Şehir</label></b>
+                    <input type="text" name="CariSehir" class="form-control" />
+                    <br />
+                    <b><label>Mail</label></b>
+                    <input type="text" name="CariMail" class="form-control" />
+                    <br />
+                    <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

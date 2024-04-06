@@ -1,0 +1,66 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHareket
+@{ int deger = 0;}
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Satış Oluşturma Sayfası</h2>
+            </div>
+            <form method="post" action="/Satis/AddSatis">
+                <div class="modal-body">
+
+                    @*<b><label>Seri No:</label></b><b style="margin-left:150px;"><label>Sıra No:</label></b>
+                        <div>
+                            <div class="float-left"><input type="text" class="form-control col-md-7" /></div>
+                            <div class="float-left"><input type="text" class="form-control col-md-7" /></div>
+                        </div>*@
+                    <br /> <br /> <br />
+                    <b><label>Ürün Adı</label></b>
+                    @Html.DropDownListFor(x => x.Urunid, (List<SelectListItem>)ViewBag.urun, "Ürün Seçiniz", new { @class = "form-control" })
+                    <br />
+                    <b><label>Cari</label></b>
+                    @Html.DropDownListFor(x => x.Cariid, (List<SelectListItem>)ViewBag.Cari, "Cari Seçiniz", new { @class = "form-control" })
+                    <br />
+                    <b><label>Personel</label></b>
+                    @Html.DropDownListFor(x => x.Personelid, (List<SelectListItem>)ViewBag.personel, "Personel Seçiniz", new { @class = "form-control" })
+                    <br />
+                    <b><label>Adet</label></b>
+                    <input type="text" name="Adet" id="txt1" onchange="sum();" list="defaultNumbers" placeholder="Adet Giriniz" class="form-control" />
+                    <br />
+                    <b><label>Satış Fiyatı</label></b>
+                    <input type="text" name="Fiyat" id="txt2" onkeyup="sum();" class="form-control" />
+                    <br />
+                    <b><label>Toplam Fiyat</label></b>
+                    <input type="text" name="ToplamTutar" id="txt3" value="0" readonly class="form-control" />
+                    <br />
+                    <button class="btn btn-success" style="margin-left:25%; width:50%">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<script>
+    function sum() {
+        var sayi1 = document.getElementById('txt1').value;
+        var sayi2 = document.getElementById('txt2').value;
+        var sonuc = parseInt(sayi1) * parseInt(sayi2);
+        if (!isNaN(sonuc)) {
+            document.getElementById('txt3').value = sonuc;
+
+        }
+    }
+</script>
+
+<datalist id="defaultNumbers">
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
+    <option value="4"></option>
+    <option value="5"></option>
+    <option value="6"></option>
+    <option value="7"></option>
+    <option value="8"></option>
+    <option value="9"></option>
+    <option value="10"></option>
+</datalist>

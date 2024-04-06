@@ -1,0 +1,65 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Personel>
+@{
+    ViewBag.Title = "DepartmanDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Detay Sayfası</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Departman Adı : @ViewBag.name</li>
+</ol>
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+                    @foreach (var x in Model)
+                    {
+                        <div class="col-12 col-sm-5 col-md-3 d-flex align-items-stretch" style="margin-top:30px;">
+                            <div class="card bg-light">
+                                <div class="card-header text-muted border-bottom-0">
+                                    @ViewBag.name Uzmanı.
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>@x.PersonelAd</b></h2>
+
+                                            @Html.Action("PersonelDatalar")
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="@x.PersonelGorsel" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="/Departman/DepartmanPersonelSatis/@x.Personelid" class="btn btn-outline-light" style="background-color:orange;">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Satışlar
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</body>
+</html>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("DepartmanDetay", new { p }))
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />

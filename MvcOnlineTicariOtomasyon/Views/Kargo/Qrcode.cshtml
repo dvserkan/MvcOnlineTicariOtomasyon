@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = null;
+    Layout = null;
+}
+
+@*PENCERE*@
+<div class="modal" id="Modal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">QR</h2>
+            </div>
+            <form method="post">
+                <div align="center" class="modal-body">
+                    @if (ViewBag.karekodimage != null)
+                    {
+                        <img src="@ViewBag.karekodimage" alt="" style="width:400px;height:400px; margin-left:auto" />
+                    }
+                    @*<i class="btn btn-outline-danger">QR İndir</i>*@
+                    <button type="button" id="GetFile" class="btn btn-outline-danger">QR İndir!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('#GetFile').on('click', function () {
+        $.ajax({
+            url: '@ViewBag.karekodimage',
+            method: 'GET',
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success: function (data) {
+                var a = document.createElement('a');
+                var url = window.URL.createObjectURL(data);
+                a.href = url;
+                a.download = '@ViewBag.id'+'.png';
+                document.body.append(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            }
+        });
+    });
+</script>
+
+
+
+

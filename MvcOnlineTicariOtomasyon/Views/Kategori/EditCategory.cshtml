@@ -1,0 +1,46 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Kategori
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<div style="margin-left:35%;margin-top:8%;" >
+    <br /><br /><br />
+    <h4 style="margin-left:10px;">Kategori Düzenleme Sayfası</h4>
+    <form method="post" id="myForm" class="col-xl-5 col-md-5 table-bordered" style="height:180px;">
+        @Html.HiddenFor(x => x.KategoriID, new { @class = "form-control", style = "visibility:hidden" })
+        <br />
+        <b>@Html.Label("Kategori Adı")</b>
+        @Html.TextBoxFor(x => x.KategoriAd , new { @class = "form-control" })
+        <br />
+        <input type="button" class="btn btn-outline-danger" id="btn-submit" value="Güncelle" name="wallet_checked" onchange="this.form.submit();">
+    </form>
+</div>
+
+<script>
+
+    $(document).on('click', '#btn-submit', function (e) {
+        e.preventDefault();
+        let form = $(this).parents('form');
+        swal(
+            {
+                title: 'İşlem Başarılı.',
+                text: 'Kayıt Tamamlandı.',
+                icon: 'success',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false,
+                timer: 1000
+            }).then((isConfirm) => {
+                document.getElementById("myForm").submit();
+                return true;
+            });
+    });
+</script>
