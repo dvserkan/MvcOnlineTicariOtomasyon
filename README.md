@@ -38,3 +38,5 @@ Proje kapsamında kullanılan teknolojiler.<br>
 📌 Dashboard yapısı<br>
 📌 Chart<br>
 📌 Widget Cards kullanımları<br>
+
+![Diagram](https://github.com/dvserkan/MvcOnlineTicariOtomasyon/assets/163462310/5e966fcc-2156-4baa-b546-b9c0e4a378d6)
